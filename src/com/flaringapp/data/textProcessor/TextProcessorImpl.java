@@ -35,7 +35,7 @@ public class TextProcessorImpl implements TextProcessor {
             for (int i = 0; i < line.length(); i++) {
                 if (SentenceDelimiters.contains(line.charAt(i))) {
                     String sentenceBeginning = String.join("", uncompletedSentenceParts);
-                    String sentenceEnding = line.substring(lastSentenceEndIndex + 1, i + 1);
+                    String sentenceEnding = line.substring(lastSentenceEndIndex + 1, i + 1).trim();
 
                     sentences.add(sentenceBeginning + sentenceEnding);
 
