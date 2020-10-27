@@ -1,3 +1,5 @@
+package textProcessor;
+
 import com.flaringapp.app.Constants;
 import com.flaringapp.app.InstanceResolver;
 import com.flaringapp.data.textProcessor.TextProcessor;
