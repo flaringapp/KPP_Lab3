@@ -2,12 +2,15 @@ package textProcessor;
 
 import com.flaringapp.app.InstanceResolver;
 import com.flaringapp.data.models.Text;
+import com.flaringapp.data.pathSearcher.PathSearcher;
 import com.flaringapp.data.textProcessor.TextProcessor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TextProcessorTest {
 
@@ -45,6 +48,7 @@ public class TextProcessorTest {
     );
 
     TextProcessor processor = InstanceResolver.resolveTextProcessor();
+    PathSearcher pathSearcher = InstanceResolver.resolvePathSearcher();
 
     @Test
     public void testSplitTextToSentences() {
@@ -57,6 +61,19 @@ public class TextProcessorTest {
         List<String> sentences = processor.splitTextToSentences(new Text(INPUT));
         List<String> singleLineSentences = processor.filterSingleLineSentences(sentences);
         Assertions.assertEquals(singleLineSentences, SINGLE_LINE_RESULT);
+    }
+
+    @Test
+    public void testFindPathsInSentences() {
+        List<String> sentences = processor.splitTextToSentences(new Text(INPUT));
+        List<String> words = processor.findDistinctWordsWithLength(sentences, DISTINCT_WORDS_LENGTH_INPUT);
+
+        List<String> expectedWords = sentences.stream()
+                .map(sentence -> pathSearcher.findPathsInString(sentence))
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+
+        Assertions.assertEquals(words, expectedWords);
     }
 
     @Test
