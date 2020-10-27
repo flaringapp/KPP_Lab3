@@ -66,7 +66,7 @@ public class TextProcessorTest {
     @Test
     public void testFindPathsInSentences() {
         List<String> sentences = processor.splitTextToSentences(new Text(INPUT));
-        List<String> words = processor.findDistinctWordsWithLength(sentences, DISTINCT_WORDS_LENGTH_INPUT);
+        List<String> words = processor.findAllPathsInSentences(sentences);
 
         List<String> expectedWords = sentences.stream()
                 .map(sentence -> pathSearcher.findPathsInString(sentence))
