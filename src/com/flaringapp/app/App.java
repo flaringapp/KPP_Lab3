@@ -1,10 +1,12 @@
 package com.flaringapp.app;
 
-import com.flaringapp.app.demo.RegexDemo;
+import com.flaringapp.app.demo.Demo;
 
 public class App {
 
     public static void main(String[] args) {
-        new RegexDemo().run();
+        Demo demo = DemoResolver.resolveDemo();
+        demo.run();
     }
 }
+
