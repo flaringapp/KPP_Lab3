@@ -1,0 +1,6 @@
+This is sentence. Some
+multiline
+sentence c:\asd asdq\asd sda\as d
+asd\asd\asd
+\arq\rqq\qq\
+asd ..\asdq\asd.txt
