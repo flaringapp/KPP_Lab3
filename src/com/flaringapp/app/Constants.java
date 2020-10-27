@@ -2,7 +2,7 @@ package com.flaringapp.app;
 
 public class Constants {
 
-    public static final boolean IS_UNIX = true;
+    public static boolean IS_UNIX = true;
 
     public static final String INPUT_FILES_DIR = "input";
 
