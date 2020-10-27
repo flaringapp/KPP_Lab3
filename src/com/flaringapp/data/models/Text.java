@@ -1,6 +1,7 @@
 package com.flaringapp.data.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Text {
@@ -13,6 +14,10 @@ public class Text {
 
     public Text(List<String> lines) {
         this.lines = lines;
+    }
+
+    public Text(String line) {
+        this(Collections.singletonList(line));
     }
 
     public List<String> getLines() {
