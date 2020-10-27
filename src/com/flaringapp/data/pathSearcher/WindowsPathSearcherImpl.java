@@ -72,7 +72,9 @@ public class WindowsPathSearcherImpl extends PathSearcherImpl {
                 continue;
             }
 
-            currentUnconfirmedPathParts.add(word);
+            if (!currentPathParts.isEmpty()) {
+                currentUnconfirmedPathParts.add(word);
+            }
         }
 
         if (!currentPathParts.isEmpty()) {
