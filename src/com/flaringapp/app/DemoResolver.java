@@ -7,7 +7,6 @@ import com.flaringapp.app.utils.Callable;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import static com.flaringapp.app.utils.PrinterUtils.printLine;
 
@@ -19,18 +18,16 @@ public class DemoResolver {
     }};
 
     public static Demo resolveDemo() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            String param;
-            do {
-                printSelectDemo();
-                param = resolveCorrectDemoParam(scanner);
-                if (param == null) {
-                    printLine("\nEnter a correct number please!");
-                    continue;
-                }
-                return dependencies.get(param).call();
-            } while (true);
-        }
+        String param;
+        do {
+            printSelectDemo();
+            param = resolveCorrectDemoParam();
+            if (param == null) {
+                printLine("\nEnter a correct number please!");
+                continue;
+            }
+            return dependencies.get(param).call();
+        } while (true);
     }
 
     private static void printSelectDemo() {
@@ -39,9 +36,9 @@ public class DemoResolver {
         printLine("\t2. Text regex demo");
     }
 
-    private static String resolveCorrectDemoParam(Scanner scanner) {
+    private static String resolveCorrectDemoParam() {
         printLine("\nPlease enter the number of the demo");
-        String param = scanner.nextLine();
+        String param = ScannerWrapper.scanner().nextLine();
 
         if (!dependencies.containsKey(param)) return null;
         return param;

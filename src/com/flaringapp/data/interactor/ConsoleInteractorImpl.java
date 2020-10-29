@@ -1,5 +1,7 @@
 package com.flaringapp.data.interactor;
 
+import com.flaringapp.app.ScannerWrapper;
+
 import java.util.Scanner;
 
 import static com.flaringapp.app.utils.PrinterUtils.printLine;
@@ -8,7 +10,7 @@ public class ConsoleInteractorImpl implements ConsoleInteractor {
 
     private final ConsoleConsumer consumer;
 
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = ScannerWrapper.scanner();
 
     public ConsoleInteractorImpl(ConsoleConsumer consumer) {
         this.consumer = consumer;
